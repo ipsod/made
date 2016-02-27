@@ -12,7 +12,7 @@ This project initially developed under and for Ubuntu operating system, so most 
 
 *After that choose some directory as a project directory (i.e. ~/projects) mkdir it if necessary than cd to it. Clone repository:*
 
-    git clone git@github.com:alekseyr/pyjobs.git
+    git clone git@github.com:ipsod/made.git
 
 *Than build the environment:*
 

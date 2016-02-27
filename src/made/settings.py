@@ -36,7 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'django_extensions',
+    'model_utils',
+
+    'catalog',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,9 +85,9 @@ DATABASES = {
     }
 }
 
-LANGUAGE_CODE = 'ru-Ru'  # set to appropriate one
+LANGUAGE_CODE = 'en-us'  # set to appropriate one
 
-TIME_ZONE = 'Europe/Moscow'  # set to appropriate one
+TIME_ZONE = 'US/Central'  # set to appropriate one
 
 USE_I18N = True
 
