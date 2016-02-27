@@ -4,16 +4,16 @@ from model_utils import Choices
 from mptt.models import MPTTModel, TreeForeignKey
 
 
-class ThingCategory(MPTTModel):
-    class Meta:
-        verbose_name_plural = "thing categories"
-
-    name = models.CharField(max_length=200)
-    parent = TreeForeignKey('self', null=True, related_name='children', db_index=True)
-    description = models.TextField(max_length=200, blank=True)
-
-    def __str__(self):
-        return self.name
+# class ThingCategory(MPTTModel):
+#     class Meta:
+#         verbose_name_plural = "thing categories"
+#
+#     name = models.CharField(max_length=200)
+#     parent = TreeForeignKey('self', null=True, related_name='children', db_index=True)
+#     description = models.TextField(max_length=200, blank=True)
+#
+#     def __str__(self):
+#         return self.name
     # inherit_attributes = models.BooleanField(default=True)
 
 
@@ -40,7 +40,7 @@ class Thing(models.Model):
 
     def __str__(self):
         return "Thing " + str(self.sku)
-    categories = models.ManyToManyField(ThingCategory)
+#     categories = models.ManyToManyField(ThingCategory)
 #     attributes = models.ManyToManyField(ThingAttributeValue)
 #     location = models.ForeignKey(Location)
 
