@@ -1,0 +1,29 @@
+<h1> Things </h1>
+{% if things %}
+    <ul>
+    {% for thing in things %}
+        <li><a href="/catalog/{{ thing.id }}/">{{ thing }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if things.has_previous %}
+                <a href="?page={{ things.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ things.number }} of {{ things.paginator.num_pages }}.
+            </span>
+
+            {% if things.has_next %}
+                <a href="?page={{ things.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+
+{% else %}
+    <p>There are no things here.</p>
+{% endif %}

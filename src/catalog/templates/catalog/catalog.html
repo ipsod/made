@@ -1,0 +1,13 @@
+<h1> Catalog </h2>
+
+
+{% if subcategories %}
+<h2> Categories </h2>
+    <ul>
+    {% for subcategory in subcategories %}
+        <li><a href="/catalog/category/{{ subcategory.id }}/">{{ subcategory }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>There are no subcategories here.</p>
+{% endif %}
