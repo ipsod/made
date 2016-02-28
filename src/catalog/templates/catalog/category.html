@@ -1,0 +1,14 @@
+<p>
+<h1>{{ category }}</h1>
+ID: {{ category.id }}<br/>
+Name: {{ category.name }}<br/>
+Description: {{ category.description|default:"(Empty)" }}<br/>
+</p>
+
+<p>
+{% include "catalog/category_list.html" %}
+</p>
+
+<p>
+{% include "catalog/index.html" %}
+</p>

@@ -2,7 +2,7 @@
 {% if things %}
     <ul>
     {% for thing in things %}
-        <li><a href="/catalog/{{ thing.id }}/">{{ thing }}</a></li>
+        <li><a href="/catalog/{{ thing.sku }}/">{{ thing }}</a></li>
     {% endfor %}
     </ul>
 

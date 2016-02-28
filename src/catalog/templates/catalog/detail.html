@@ -1,6 +1,13 @@
+<p>
 <h1>{{ thing }}</h1>
-
+ID: {{ thing.id }}<br/>
+SKU: {{ thing.sku }}<br/>
 Name: {{ thing.name }}<br/>
 Description: {{ thing.description|default:"(Empty)" }}<br/>
 Condition: {{ thing.condition }}<br/>
 Condition Description: {{ thing.condition_description|default:"(Empty)" }}<br/>
+</p>
+
+<p>
+{% include "catalog/category_list.html" %}
+</p>

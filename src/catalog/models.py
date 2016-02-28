@@ -4,17 +4,22 @@ from model_utils import Choices
 from mptt.models import MPTTModel, TreeForeignKey
 
 
-# class ThingCategory(MPTTModel):
-#     class Meta:
-#         verbose_name_plural = "thing categories"
-#
-#     name = models.CharField(max_length=200)
-#     parent = TreeForeignKey('self', null=True, related_name='children', db_index=True)
-#     description = models.TextField(max_length=200, blank=True)
-#
-#     def __str__(self):
-#         return self.name
-    # inherit_attributes = models.BooleanField(default=True)
+class ThingCategory(MPTTModel):
+    class Meta:
+        verbose_name_plural = "thing categories"
+
+    name = models.CharField(max_length=200)
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='children', db_index=True)
+    description = models.TextField(max_length=200, blank=True)
+
+    # TODO This still allows root nodes to have the same name
+    class Meta:
+        unique_together = (('name', 'parent', ), )
+        verbose_name_plural = "categories"
+
+    def __str__(self):
+        return self.name
+  # inherit_attributes = models.BooleanField(default=True)
 
 
 # #  http://stackoverflow.com/questions/3712688/creation-of-dynamic-model-fields-in-django
@@ -29,7 +34,6 @@ from mptt.models import MPTTModel, TreeForeignKey
 #     value = models.CharField()
 
 
-
 class Thing(models.Model):
     sku = models.IntegerField(unique=True)
     name = models.CharField(max_length=200, blank=True)
@@ -38,9 +42,10 @@ class Thing(models.Model):
     condition = models.CharField(choices=CONDITION, default=CONDITION.new, max_length=20)
     condition_description = models.TextField(blank=True)
 
+    categories = models.ManyToManyField(ThingCategory)
+
     def __str__(self):
         return "Thing " + str(self.sku)
-#     categories = models.ManyToManyField(ThingCategory)
 #     attributes = models.ManyToManyField(ThingAttributeValue)
 #     location = models.ForeignKey(Location)
 
