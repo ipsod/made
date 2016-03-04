@@ -1,0 +1,23 @@
+{% extends 'admin.html' %}
+{% block content %}
+<p>
+<h1>Thing Attribute</h1>
+ID: {{ thing_attribute.id }}<br/>
+Name: {{ thing_attribute.name }}<br/>
+Description: {{ thing_attribute.description|default:"(Empty)" }}<br/>
+</p>
+
+<p>
+<h2>Thing Categories</h2>
+{% if thing_categories %}
+    <ul>
+    {% for category in thing_categories %}
+        <li>{{ category }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    There are no categories here.
+{% endif %}
+</p>
+
+{% endblock %}

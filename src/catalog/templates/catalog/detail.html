@@ -1,3 +1,6 @@
+{% extends 'admin.html' %}
+
+{% block content %}
 <p>
 <h1>{{ thing }}</h1>
 ID: {{ thing.id }}<br/>
@@ -8,6 +11,27 @@ Condition: {{ thing.condition }}<br/>
 Condition Description: {{ thing.condition_description|default:"(Empty)" }}<br/>
 </p>
 
+
+<h2>Attributes</h2>
+{% if attributes %}
+    <ul>
+    {% for attribute, value in attributes %}
+        <li>{{ attribute }}: {{ value }}</li>
+    {% endfor %}
+    </ul>
+
+{% else %}
+    <p>There are no attributes here.</p>
+{% endif %}
+
+<h2>Categories</h2>
 <p>
-{% include "catalog/category_list.html" %}
+    <ul>
+        {% for category in categories %}
+        <li>
+            <a href="{% url 'category_detail' pk=category.pk %}">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
 </p>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'admin.html' %}
+
+{% block content %}
+<form method="POST" class="post-form">{% csrf_token %}
+    <h2>Thing:</h2>
+    <!-- Make use of Django's automatic form templating -->
+    {{ thing_form.as_p }}
+
+    <!-- Now add the sub-form to this form -->
+    <h3>Attributes:</h3>
+    <p>
+    <a href="{% url 'attribute_create' %}">create new</a>
+    </p>
+    {{ value_formset.management_form }}
+    {% for form in value_formset %}
+    <p>
+    {{ form.instance.thing_attribute }}:
+    {{ form.id }}
+    {{ form.value }}
+    </p>
+    {% endfor %}
+
+    <p><button type="submit" class="save btn btn-default">Save</button></p>
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'admin.html' %}
+{% block content %}
+    <h2>Thing Attributes</h2>
+
+
+    <a href="{% url 'attribute_create' %}">create new</a>
+    <ul>
+        {% for attribute in object_list %}
+        <li>
+            <a href="{% url 'attribute_detail' pk=attribute.pk %}">{{ attribute.name }}</a>
+            <a href="{% url 'attribute_edit' pk=attribute.pk %}">edit</a>
+            <a href="{% url 'attribute_delete' pk=attribute.pk %}">delete</a>
+        </li>
+
+        {% endfor %}
+    </ul>
+{% endblock %}

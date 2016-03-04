@@ -1,3 +1,6 @@
+{% extends 'admin.html' %}
+
+{% block content %}
 <p>
 <h1>{{ category }}</h1>
 ID: {{ category.id }}<br/>
@@ -10,5 +13,6 @@ Description: {{ category.description|default:"(Empty)" }}<br/>
 </p>
 
 <p>
-{% include "catalog/index.html" %}
+{% include "catalog/thing_list.html" %}
 </p>
+{% endblock %}

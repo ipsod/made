@@ -22,8 +22,6 @@ SECRET_KEY = 'should be redefined in production'
 
 DEBUG = True
 
-TEMPLATE_DEBUG = DEBUG
-
 ALLOWED_HOSTS = []
 
 
@@ -40,6 +38,8 @@ INSTALLED_APPS = (
     'django_extensions',
     'model_utils',
     'mptt',
+    'extra_views',
+    'debug_toolbar',
 
     'catalog',
 )
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'made.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ROOT_DIR + '/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,7 +100,9 @@ MEDIA_ROOT = subroot('static_content/media/')
 
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = subroot('static_content/static/')
+STATICFILES_DIRS = (subroot('static_content/static/'),)
+
+# STATIC_ROOT = subroot('static_content/static/')
 
 STATIC_URL = '/static/'
 

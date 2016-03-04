@@ -1,0 +1,11 @@
+{% extends 'admin.html' %}
+{% block content %}
+<form method="POST" class="post-form">{% csrf_token %}
+    <h2>Delete?</h2>
+    Are you sure you want to delete category "{{ object.name }}"?
+
+    <!-- Make use of Django's automatic form templating -->
+    {{ form.as_p }}
+    <p><button type="submit" class="delete btn btn-default">Delete</button></p>
+</form>
+{% endblock %}

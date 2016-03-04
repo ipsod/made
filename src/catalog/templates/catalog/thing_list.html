@@ -1,4 +1,4 @@
-<h1> Things </h1>
+<h2> Things </h2>
 {% if things %}
     <ul>
     {% for thing in things %}
@@ -8,8 +8,7 @@
 
     <div class="pagination">
         <span class="step-links">
-            {% if things.has_previous %}
-                <a href="?page={{ things.previous_page_number }}">previous</a>
+            {% if things.has_previous %} <a href="?page={{ things.previous_page_number }}">previous</a>
             {% endif %}
 
             <span class="current">
@@ -21,8 +20,6 @@
             {% endif %}
         </span>
     </div>
-
-
 
 {% else %}
     <p>There are no things here.</p>
